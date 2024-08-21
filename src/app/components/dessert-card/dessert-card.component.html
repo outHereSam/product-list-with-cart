@@ -1,14 +1,32 @@
 <div class="dessert-card">
   <div class="image">
-    <div class="photo"></div>
+    <div class="photo">
+      <img
+        class="mobile"
+        [src]="dessertData.image.mobile"
+        [alt]="dessertData.name"
+      />
+      <img
+        class="tablet"
+        [src]="dessertData.image.tablet"
+        [alt]="dessertData.name"
+      />
+      <img
+        class="desktop"
+        [src]="dessertData.image.desktop"
+        [alt]="dessertData.name"
+      />
+    </div>
     <button class="add-to-cart">
       <img src="../../../assets/images/icon-add-to-cart.svg" alt="Cart Icon" />
       Add to Cart
     </button>
   </div>
   <div class="description">
-    <p class="category">Waffle</p>
-    <h3 class="name">Waffle with Berries</h3>
-    <p class="price">$6.50</p>
+    <p class="category">{{ dessertData.category }}</p>
+    <h3 class="name">{{ dessertData.name }}</h3>
+    <p class="price">
+      {{ dessertData.price | currency : "USD" : "symbol" : "1.2-2" }}
+    </p>
   </div>
 </div>

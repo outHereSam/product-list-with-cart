@@ -2,6 +2,8 @@
   <h1 class="title">Desserts</h1>
 
   <div class="dessert-list">
-    <app-dessert-card />
+    @for (dessert of dessertList; track dessert.id) {
+    <app-dessert-card [dessertData]="dessert" />
+    }
   </div>
 </div>

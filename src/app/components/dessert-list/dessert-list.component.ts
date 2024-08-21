@@ -1,5 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, inject } from '@angular/core';
 import { DessertCardComponent } from '../dessert-card/dessert-card.component';
+import { DessertsService } from '../../services/desserts.service';
+import { Dessert } from '../../interfaces/IDessert';
 
 @Component({
   selector: 'app-dessert-list',
@@ -8,4 +10,13 @@ import { DessertCardComponent } from '../dessert-card/dessert-card.component';
   templateUrl: './dessert-list.component.html',
   styleUrl: './dessert-list.component.sass',
 })
-export class DessertListComponent {}
+export class DessertListComponent {
+  private dessertsService: DessertsService = inject(DessertsService);
+  protected dessertList: Dessert[] = [];
+
+  constructor() {
+    this.dessertsService.getAllDesserts().then((desserts: Dessert[]) => {
+      this.dessertList = desserts;
+    });
+  }
+}
