@@ -1,6 +1,11 @@
 <div class="dessert-card">
   <div class="image">
-    <div class="photo">
+    <div
+      [style]="{
+        border: cartBtnClicked ? 'solid 2px hsl(14, 86%, 42%)' : 'none'
+      }"
+      class="photo"
+    >
       <img
         class="mobile"
         [src]="dessertData.image.mobile"
@@ -17,10 +22,32 @@
         [alt]="dessertData.name"
       />
     </div>
-    <button class="add-to-cart">
+    <button
+      class="add-to-cart"
+      (click)="addToCart(dessertData.id)"
+      [style]="{ display: cartBtnClicked ? 'none' : 'flex' }"
+    >
       <img src="../../../assets/images/icon-add-to-cart.svg" alt="Cart Icon" />
       Add to Cart
     </button>
+    <div
+      class="quantity-selector"
+      [style]="{ display: cartBtnClicked ? 'flex' : 'none' }"
+    >
+      <button class="decrease">
+        <img
+          src="../../../assets/images/icon-decrement-quantity.svg"
+          alt="Decrease quantity"
+        />
+      </button>
+      <p class="quantity">4</p>
+      <button class="increase">
+        <img
+          src="../../../assets/images/icon-increment-quantity.svg"
+          alt="Increase quantity"
+        />
+      </button>
+    </div>
   </div>
   <div class="description">
     <p class="category">{{ dessertData.category }}</p>

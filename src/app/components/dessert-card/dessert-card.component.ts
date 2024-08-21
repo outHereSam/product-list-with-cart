@@ -22,4 +22,11 @@ export class DessertCardComponent {
     category: '',
     price: 0,
   };
+
+  cartBtnClicked = false;
+
+  addToCart(id: string) {
+    this.cartBtnClicked = true;
+    console.log('Item ID:', id);
+  }
 }
