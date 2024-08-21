@@ -13,14 +13,17 @@ export class CartService {
 
   constructor() {}
 
+  get cartQuantity() {
+    return this.cartItems.reduce(
+      (quantity, item) => item.quantity + quantity,
+      0
+    );
+  }
+
   getItemQuantity(id: string) {
     const item = this.cartItems.find((item) => item.id === id);
 
-    if (item == null) {
-      return 0;
-    } else {
-      return item.quantity;
-    }
+    return item ? item.quantity : 0;
   }
 
   increaseCartQuantity(id: string) {
@@ -34,6 +37,7 @@ export class CartService {
     } else {
       // the item exists, increase the quantity
       item.quantity += 1;
+      console.log(this.cartQuantity);
     }
   }
 
@@ -52,6 +56,8 @@ export class CartService {
       } else {
         // Otherwise, decrease the quantity by 1
         item.quantity -= 1;
+
+        console.log(this.cartQuantity);
       }
     }
   }
