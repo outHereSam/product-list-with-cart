@@ -8,10 +8,9 @@ describe('DessertListComponent', () => {
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [DessertListComponent]
-    })
-    .compileComponents();
-    
+      imports: [DessertListComponent],
+    }).compileComponents();
+
     fixture = TestBed.createComponent(DessertListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
@@ -19,5 +18,11 @@ describe('DessertListComponent', () => {
 
   it('should create', () => {
     expect(component).toBeTruthy();
+  });
+
+  it('should have a title', () => {
+    const compiled = fixture.nativeElement;
+    const title = compiled.querySelector('h1').textContent;
+    expect(title).toBe('Desserts');
   });
 });
