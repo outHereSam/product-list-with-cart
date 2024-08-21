@@ -1,6 +1,8 @@
 <div class="cart-container">
   <h1 class="title">Your Cart({{ cartService.cartQuantity }})</h1>
 
+  <!-- Conditionally render the cart -->
+  @if (cartService.cartQuantity < 1) {
   <div class="empty-content">
     <img
       src="../../../assets/images/illustration-empty-cart.svg"
@@ -9,4 +11,7 @@
 
     <p>Your added items will appear here</p>
   </div>
+  } @for (cartItem of cartService.cartItems; track cartItem.id) {
+  <app-cart-item [cartItemId]="cartItem.id" />
+  }
 </div>
