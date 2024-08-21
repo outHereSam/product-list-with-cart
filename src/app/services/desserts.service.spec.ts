@@ -1,16 +1,16 @@
-import { TestBed } from '@angular/core/testing';
-
 import { DessertsService } from './desserts.service';
 
 describe('DessertsService', () => {
   let service: DessertsService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
-    service = TestBed.inject(DessertsService);
+    service = new DessertsService();
   });
 
-  it('should be created', () => {
-    expect(service).toBeTruthy();
+  it('should return a Dessert List with 9 desserts', (done: DoneFn) => {
+    service.getAllDesserts().then((desserts) => {
+      expect(desserts.length).toBe(9);
+      done();
+    });
   });
 });
