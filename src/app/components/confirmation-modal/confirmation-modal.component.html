@@ -1,4 +1,4 @@
-<div [class]="modalOpened ? 'container' : 'hidden'">
+<div [class]="modalService.isOpened ? 'container' : 'hidden'">
   <div class="backdrop"></div>
   <div class="modal">
     <img
@@ -22,6 +22,8 @@
       </div>
     </div>
 
-    <button class="new" (click)="closeModal()">Start New Order</button>
+    <button class="new" (click)="modalService.closeModal()">
+      Start New Order
+    </button>
   </div>
 </div>

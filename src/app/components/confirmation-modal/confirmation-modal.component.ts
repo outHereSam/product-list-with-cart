@@ -4,6 +4,7 @@ import { CartService } from '../../services/cart.service';
 import { DessertsService } from '../../services/desserts.service';
 import { Dessert } from '../../interfaces/IDessert';
 import { CurrencyPipe } from '@angular/common';
+import { ModalService } from '../../services/modal.service';
 
 @Component({
   selector: 'app-confirmation-modal',
@@ -15,18 +16,13 @@ import { CurrencyPipe } from '@angular/common';
 export class ConfirmationModalComponent {
   cartService: CartService = inject(CartService);
   dessertsService: DessertsService = inject(DessertsService);
+  modalService: ModalService = inject(ModalService);
   protected dessertList: Dessert[] = [];
 
   ngOnInit() {
     this.dessertsService.getAllDesserts().then((desserts: Dessert[]) => {
       this.dessertList = desserts;
     });
-  }
-
-  @Input() modalOpened: boolean = false;
-
-  closeModal() {
-    this.modalOpened = false;
   }
 
   getTotalPrice(): number {

@@ -1,4 +1,4 @@
-<app-confirmation-modal [modalOpened]="modalIsOpen" />
+<app-confirmation-modal />
 <div class="cart-container">
   <h1 class="title">Your Cart({{ cartService.cartQuantity }})</h1>
 
@@ -38,7 +38,9 @@
       </p>
     </div>
 
-    <button class="confirm" (click)="openModal()">Confirm Order</button>
+    <button class="confirm" (click)="modalService.openModal()">
+      Confirm Order
+    </button>
     }
   </div>
 </div>

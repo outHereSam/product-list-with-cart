@@ -5,6 +5,7 @@ import { Dessert } from '../../interfaces/IDessert';
 import { DessertsService } from '../../services/desserts.service';
 import { CurrencyPipe } from '@angular/common';
 import { ConfirmationModalComponent } from '../confirmation-modal/confirmation-modal.component';
+import { ModalService } from '../../services/modal.service';
 
 @Component({
   selector: 'app-cart',
@@ -16,8 +17,8 @@ import { ConfirmationModalComponent } from '../confirmation-modal/confirmation-m
 export class CartComponent {
   cartService: CartService = inject(CartService);
   dessertsService: DessertsService = inject(DessertsService);
+  modalService: ModalService = inject(ModalService);
   protected dessertList: Dessert[] = [];
-  modalIsOpen = false;
 
   ngOnInit() {
     this.dessertsService.getAllDesserts().then((desserts: Dessert[]) => {
@@ -30,9 +31,5 @@ export class CartComponent {
       const item = this.dessertList.find((i) => i.id === cartItem.id);
       return total + (item?.price || 0) * cartItem.quantity;
     }, 0);
-  }
-
-  openModal() {
-    this.modalIsOpen = true;
   }
 }
