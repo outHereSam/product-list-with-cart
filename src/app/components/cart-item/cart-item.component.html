@@ -1,3 +1,4 @@
+@if (isCartItem) {
 <div class="cart-item">
   <div>
     <h4 class="name">{{ item.name }}</h4>
@@ -30,3 +31,29 @@
     </button>
   </div>
 </div>
+} @else {
+
+<div class="confirmed-item">
+  <div class="details">
+    <div class="thumbnail">
+      <img [src]="item.image.thumbnail" alt="Thumbnail" />
+    </div>
+    <div>
+      <h4 class="name">{{ item.name }}</h4>
+      <span class="quantity">{{ cartService.getItemQuantity(item.id) }}x</span>
+      <span class="price"
+        >&commat; {{ item.price | currency : "USD" : "symbol" : "1.2-2" }}</span
+      >
+    </div>
+  </div>
+
+  <div class="option">
+    <span class="total-price">
+      {{
+        item.price * cartService.getItemQuantity(item.id)
+          | currency : "USD" : "symbol" : "1.2-2"
+      }}</span
+    >
+  </div>
+</div>
+}

@@ -1,3 +1,5 @@
+background-color: #952C0B
+<app-confirmation-modal [modalOpened]="modalIsOpen" />
 <div class="cart-container">
   <h1 class="title">Your Cart({{ cartService.cartQuantity }})</h1>
 
@@ -16,7 +18,7 @@
 
     <div class="cart-items">
       @for (cartItem of cartService.cartItems; track cartItem.id) {
-      <app-cart-item [cartItemId]="cartItem.id" />
+      <app-cart-item [cartItemId]="cartItem.id" [isCartItem]="true" />
       }
     </div>
 
@@ -37,7 +39,7 @@
       </p>
     </div>
 
-    <button class="confirm">Confirm Order</button>
+    <button class="confirm" (click)="openModal()">Confirm Order</button>
     }
   </div>
 </div>

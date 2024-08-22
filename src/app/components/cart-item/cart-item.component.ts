@@ -13,6 +13,7 @@ import { CurrencyPipe } from '@angular/common';
 })
 export class CartItemComponent {
   @Input() cartItemId = '';
+  @Input() isCartItem = true;
   item: Dessert = {
     id: '',
     image: {
