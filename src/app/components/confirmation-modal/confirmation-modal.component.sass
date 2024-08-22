@@ -23,16 +23,6 @@
         z-index: 1040
         background-color: rgba(0, 0, 0, 0.50)
 
-    .modal 
-        background-color: $white
-        position: fixed
-        top: 50%
-        left: 50%
-        translate: -50% -50%
-        z-index: 1050
-        padding: 40px 
-        border-radius: 12px
-
         .heading
             margin: 24px 0 32px 0
 
@@ -73,3 +63,24 @@
             background-color: #952C0B
             
         
+@media only screen and (min-width: 640px)
+    .modal 
+        background-color: $white
+        position: fixed
+        top: 50%
+        left: 50%
+        translate: -50% -50%
+        z-index: 1050
+        padding: 40px 
+        border-radius: 12px
+
+@media only screen and (max-width: 640px)
+    .modal 
+        background-color: $white
+        position: fixed
+        left: 0
+        bottom: 0
+        z-index: 1050
+        padding: 40px 24px 24px 24px
+        width: 100%
+        border-radius: 12px

@@ -35,6 +35,10 @@
     font-weight: 500
     color: $rose-900
     margin: 0 0 8px 0
+    text-overflow: ellipsis
+    max-width: 153px
+    white-space: nowrap
+    overflow: hidden
 
 .quantity
     font-size: 14px
@@ -51,7 +55,7 @@
     display: flex
     align-items: center
     justify-content: space-between
-    gap: 252px
+    gap: 10px
     padding: 16px 0
     border-bottom: solid 1px $rose-100
 
@@ -72,3 +76,7 @@
         font-size: 16px
         font-weight: 500
         color: $rose-900
+
+@media only screen and (min-width: 640px)
+    .confirmed-item
+        gap: 252px
