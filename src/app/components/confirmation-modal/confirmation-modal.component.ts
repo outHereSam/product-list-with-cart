@@ -1,20 +1,19 @@
-import { Component, inject } from '@angular/core';
-import { CartService } from '../../services/cart.service';
+import { Component, inject, Input } from '@angular/core';
 import { CartItemComponent } from '../cart-item/cart-item.component';
-import { Dessert } from '../../interfaces/IDessert';
+import { CartService } from '../../services/cart.service';
 import { DessertsService } from '../../services/desserts.service';
+import { Dessert } from '../../interfaces/IDessert';
 import { CurrencyPipe } from '@angular/common';
-import { ConfirmationModalComponent } from '../confirmation-modal/confirmation-modal.component';
 import { ModalService } from '../../services/modal.service';
 
 @Component({
-  selector: 'app-cart',
+  selector: 'app-confirmation-modal',
   standalone: true,
-  imports: [CartItemComponent, CurrencyPipe, ConfirmationModalComponent],
-  templateUrl: './cart.component.html',
-  styleUrl: './cart.component.sass',
+  imports: [CartItemComponent, CurrencyPipe],
+  templateUrl: './confirmation-modal.component.html',
+  styleUrl: './confirmation-modal.component.sass',
 })
-export class CartComponent {
+export class ConfirmationModalComponent {
   cartService: CartService = inject(CartService);
   dessertsService: DessertsService = inject(DessertsService);
   modalService: ModalService = inject(ModalService);
