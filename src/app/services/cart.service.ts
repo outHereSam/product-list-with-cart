@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 
 export interface CartItem {
-  id: string;
+  name: string;
   quantity: number;
 }
 
@@ -20,20 +20,20 @@ export class CartService {
     );
   }
 
-  getItemQuantity(id: string) {
-    const item = this.cartItems.find((item) => item.id === id);
+  getItemQuantity(name: string) {
+    const item = this.cartItems.find((item) => item.name === name);
 
     return item ? item.quantity : 0;
   }
 
-  increaseCartQuantity(id: string) {
+  increaseCartQuantity(name: string) {
     // Find the item in the cartItems array, if it's there increase by 1
     // if not, add it and make the quantity 1
-    const item = this.cartItems.find((item) => item.id === id);
+    const item = this.cartItems.find((item) => item.name === name);
 
     if (item == null) {
       // the item doesn't exists, add it
-      this.cartItems.push({ id, quantity: 1 });
+      this.cartItems.push({ name, quantity: 1 });
     } else {
       // the item exists, increase the quantity
       item.quantity += 1;
@@ -41,11 +41,11 @@ export class CartService {
     }
   }
 
-  decreaseCartQuantity(id: string) {
+  decreaseCartQuantity(name: string) {
     // Find the item in the cartItems array, if it's there decrease by 1
     // if not, add it and make the quantity 1
     // Find the index of the item in the cartItems array
-    const itemIndex = this.cartItems.findIndex((item) => item.id === id);
+    const itemIndex = this.cartItems.findIndex((item) => item.name === name);
 
     if (itemIndex !== -1) {
       const item = this.cartItems[itemIndex];
@@ -62,8 +62,8 @@ export class CartService {
     }
   }
 
-  removeFromCart(id: string) {
-    this.cartItems = this.cartItems.filter((item) => item.id !== id);
+  removeFromCart(name: string) {
+    this.cartItems = this.cartItems.filter((item) => item.name !== name);
   }
 
   clearCart() {

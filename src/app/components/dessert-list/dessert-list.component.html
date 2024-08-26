@@ -2,7 +2,7 @@
   <h1 class="title">Desserts</h1>
 
   <div class="dessert-list">
-    @for (dessert of dessertList; track dessert.id) {
+    @for (dessert of dessertList; track dessert.name) {
     <app-dessert-card [dessertData]="dessert" />
     }
   </div>

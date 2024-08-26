@@ -28,7 +28,7 @@ export class CartComponent {
 
   getTotalPrice(): number {
     return this.cartService.cartItems.reduce((total, cartItem) => {
-      const item = this.dessertList.find((i) => i.id === cartItem.id);
+      const item = this.dessertList.find((i) => i.name === cartItem.name);
       return total + (item?.price || 0) * cartItem.quantity;
     }, 0);
   }

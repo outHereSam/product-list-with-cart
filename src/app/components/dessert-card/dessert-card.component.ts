@@ -14,7 +14,6 @@ export class DessertCardComponent {
   cartService: CartService = inject(CartService);
 
   @Input() dessertData: Dessert = {
-    id: '',
     image: {
       thumbnail: '',
       mobile: '',
