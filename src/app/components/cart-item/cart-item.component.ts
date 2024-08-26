@@ -31,9 +31,9 @@ export class CartItemComponent {
   dessertsService = inject(DessertsService);
 
   ngOnInit(): void {
-    this.dessertsService.getAllDesserts().then((desserts) => {
+    this.dessertsService.getAllDesserts().subscribe((desserts) => {
       this.item = desserts.find(
-        (dessert) => dessert.id === this.cartItemId
+        (dessert: { id: string }) => dessert.id === this.cartItemId
       ) || {
         id: '',
         image: {
