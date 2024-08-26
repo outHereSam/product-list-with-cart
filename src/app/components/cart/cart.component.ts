@@ -21,7 +21,7 @@ export class CartComponent {
   protected dessertList: Dessert[] = [];
 
   ngOnInit() {
-    this.dessertsService.getAllDesserts().then((desserts: Dessert[]) => {
+    this.dessertsService.getAllDesserts().subscribe((desserts: Dessert[]) => {
       this.dessertList = desserts;
     });
   }

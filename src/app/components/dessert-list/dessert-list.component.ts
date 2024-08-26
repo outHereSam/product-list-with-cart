@@ -15,8 +15,15 @@ export class DessertListComponent {
   protected dessertList: Dessert[] = [];
 
   constructor() {
-    this.dessertsService.getAllDesserts().then((desserts: Dessert[]) => {
-      this.dessertList = desserts;
-    });
+    // this.dessertsService.getAllDesserts().then((desserts: Dessert[]) => {
+    //   this.dessertList = desserts;
+    // });
+  }
+
+  ngOnInit() {
+    this.dessertsService.getAllDesserts().subscribe(
+      (data) => (this.dessertList = data),
+      (error) => console.error('Error fetching data:', error)
+    );
   }
 }

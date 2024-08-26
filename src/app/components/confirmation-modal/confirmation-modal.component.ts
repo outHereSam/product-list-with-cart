@@ -20,9 +20,13 @@ export class ConfirmationModalComponent {
   protected dessertList: Dessert[] = [];
 
   ngOnInit() {
-    this.dessertsService.getAllDesserts().then((desserts: Dessert[]) => {
-      this.dessertList = desserts;
-    });
+    // this.dessertsService.getAllDesserts().then((desserts: Dessert[]) => {
+    //   this.dessertList = desserts;
+    // });
+    this.dessertsService.getAllDesserts().subscribe(
+      (data) => (this.dessertList = data),
+      (error) => console.error('Error fetching data:', error)
+    );
   }
 
   getTotalPrice(): number {
