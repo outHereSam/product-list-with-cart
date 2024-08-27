@@ -35,4 +35,8 @@ export class ConfirmationModalComponent {
       return total + (item?.price || 0) * cartItem.quantity;
     }, 0);
   }
+
+  startNewOrder() {
+    this.modalService.closeModal();
+  }
 }

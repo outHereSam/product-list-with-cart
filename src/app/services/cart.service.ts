@@ -80,5 +80,6 @@ export class CartService {
 
   clearCart() {
     this.cartItems = [];
+    localStorage.setItem('cartItems', '[]');
   }
 }
