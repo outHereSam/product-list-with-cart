@@ -15,7 +15,6 @@ export class CartItemComponent {
   @Input() cartItemId = '';
   @Input() isCartItem = true;
   item: Dessert = {
-    id: '',
     image: {
       thumbnail: '',
       mobile: '',
@@ -33,9 +32,8 @@ export class CartItemComponent {
   ngOnInit(): void {
     this.dessertsService.getAllDesserts().subscribe((desserts) => {
       this.item = desserts.find(
-        (dessert: { id: string }) => dessert.id === this.cartItemId
+        (dessert: { name: string }) => dessert.name === this.cartItemId
       ) || {
-        id: '',
         image: {
           thumbnail: '',
           mobile: '',

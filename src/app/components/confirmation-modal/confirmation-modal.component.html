@@ -11,9 +11,11 @@
     </div>
 
     <div class="cartitems">
-      @for (cartItem of cartService.cartItems; track cartItem.id) {
-      <app-cart-item [cartItemId]="cartItem.id" [isCartItem]="false" />
-      }
+      <div class="confirmed-items">
+        @for (cartItem of cartService.cartItems; track cartItem.name) {
+        <app-cart-item [cartItemId]="cartItem.name" [isCartItem]="false" />
+        }
+      </div>
       <div class="order-total">
         <p>Order Total</p>
         <h2 class="total">
