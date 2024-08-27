@@ -11,7 +11,13 @@ export interface CartItem {
 export class CartService {
   cartItems: CartItem[] = [];
 
-  constructor() {}
+  constructor() {
+    const localStorageData = localStorage.getItem('cartItems');
+    if (localStorageData) {
+      this.cartItems = JSON.parse(localStorageData) as CartItem[];
+      console.log('Local Storage Data: ', localStorageData);
+    }
+  }
 
   get cartQuantity() {
     return this.cartItems.reduce(
@@ -37,8 +43,11 @@ export class CartService {
     } else {
       // the item exists, increase the quantity
       item.quantity += 1;
-      console.log(this.cartQuantity);
+      // console.log(this.cartQuantity);
     }
+
+    // Save updated cart data to localStorage
+    localStorage.setItem('cartItems', JSON.stringify(this.cartItems));
   }
 
   decreaseCartQuantity(name: string) {
@@ -57,8 +66,11 @@ export class CartService {
         // Otherwise, decrease the quantity by 1
         item.quantity -= 1;
 
-        console.log(this.cartQuantity);
+        // console.log(this.cartQuantity);
       }
+
+      // Save updated cart data to localStorage
+      localStorage.setItem('cartItems', JSON.stringify(this.cartItems));
     }
   }
 
