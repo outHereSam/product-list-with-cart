@@ -3,7 +3,7 @@
     <div
       [style]="{
         border:
-          cartBtnClicked || cartService.getItemQuantity(dessertData.name) > 0
+          cartBtnClicked && cartService.getItemQuantity(dessertData.name) > 0
             ? 'solid 2px hsl(14, 86%, 42%)'
             : 'none'
       }"
@@ -30,7 +30,7 @@
       (click)="addToCart(dessertData.name)"
       [style]="{
         display:
-          cartBtnClicked || cartService.getItemQuantity(dessertData.name) > 0
+          cartBtnClicked && cartService.getItemQuantity(dessertData.name) > 0
             ? 'none'
             : 'flex'
       }"
@@ -42,7 +42,7 @@
       class="quantity-selector"
       [style]="{
         display:
-          cartBtnClicked || cartService.getItemQuantity(dessertData.name) > 0
+          cartBtnClicked && cartService.getItemQuantity(dessertData.name) > 0
             ? 'flex'
             : 'none'
       }"
